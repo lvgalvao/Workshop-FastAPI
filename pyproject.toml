@@ -9,6 +9,7 @@ packages = [{include = "workshop_fastapi"}]
 [tool.poetry.dependencies]
 python = "3.12.1"
 fastapi = {extras = ["all"], version = "^0.110.2"}
+scikit-learn = "^1.4.2"
 
 
 [build-system]

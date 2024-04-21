@@ -28,6 +28,67 @@ Este workshop visa introduzir os conceitos básicos e as práticas necessárias 
 * **Hello World API**
     * Tutorial para criar um endpoint básico que retorna uma mensagem de "Hello, World!" usando FastAPI.
 
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+# Decorator -> É aqui que faz a mágica de transformar nossa função.
+@app.get("/")
+# Function é função padrão do Python
+def root(): # O nome não importa
+    return {"message": "Hello world!"} # Essa será a data que vamos retornar ao usuário
+```
+
+```bash
+uvicorn main:app
+```
+
+```bash
+uvicorn main:app --reload
+```
+
+HTTP metodos
+
+#### Curl
+
+Para usar `curl` para fazer uma requisição à sua API que está rodando com FastAPI, você pode enviar dados como JSON através de uma requisição POST. Suponhamos que você tenha um endpoint em sua API que espera receber os dados de uma casa e então retorna uma previsão de preço baseada nessas informações. Aqui está como você pode fazer isso com `curl`.
+
+### Exemplo de Requisição com Curl
+
+Suponha que seu endpoint para prever o preço da casa esteja configurado como `http://127.0.0.1:8000/prever/` e aceite um JSON com dois campos: `tamanho` e `quartos`. Aqui está como você pode enviar uma requisição:
+
+```bash
+curl -X 'POST' \
+  'http://127.0.0.1:8000/prever/' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "tamanho": 120,
+  "quartos": 3
+}'
+```
+
+### Explicação do Comando Curl
+
+* `-X 'POST'`: Especifica o método HTTP para a requisição, que é POST neste caso.
+* `http://127.0.0.1:8000/prever/`: URL do endpoint da API.
+* `-H 'accept: application/json'`: Define o cabeçalho HTTP para indicar que a resposta esperada deve ser em JSON.
+* `-H 'Content-Type: application/json'`: Define o cabeçalho HTTP para indicar que o corpo da requisição está em formato JSON.
+* `-d '{...}'`: Os dados sendo enviados à API. Substitua os valores de `tamanho` e `quartos` conforme necessário para os dados específicos da casa que você quer avaliar.
+
+### Testando a Requisição
+
+1. Certifique-se de que sua API FastAPI esteja rodando e acessível em `http://127.0.0.1:8000`.
+2. Abra um terminal e execute o comando `curl` fornecido.
+3. Observe a resposta da API, que deve incluir a previsão do preço da casa baseada nos dados fornecidos.
+
+Usar os cabeçalhos Accept e Content-Type nas suas requisições HTTP é uma forma de comunicar claramente ao servidor tanto o formato dos dados que você está enviando quanto o formato que você espera receber em resposta:
+
+Content-Type: application/json: Este cabeçalho informa ao servidor que o corpo da requisição que você está enviando está em formato JSON. É uma maneira de dizer, "Ei, os dados que estou enviando estão em JSON; por favor, interprete-os dessa forma."
+Accept: application/json: Este cabeçalho diz ao servidor que você deseja que a resposta seja em JSON. Isso é particularmente útil em APIs que podem retornar dados em diferentes formatos. Ao especificar application/json, você está solicitando que a API responda com dados nesse formato específico.
+
+
 ### 5. Trabalhando com Dados
 
 * **Uso de Modelos Pydantic**
@@ -78,3 +139,10 @@ Este workshop visa introduzir os conceitos básicos e as práticas necessárias 
 * Documentação Oficial do FastAPI
 * Pydantic Documentation
 * [Uvicorn Documentation](https://www.uvicorn.org/)
+
+
+## Ideias
+
+Async
+Paginação
+Autenticação
