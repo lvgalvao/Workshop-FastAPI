@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "workshop-fastapi"
+version = "0.1.0"
+description = ""
+authors = ["Luciano Filho <lvgalvaofilho@gmail.com>"]
+readme = "README.md"
+packages = [{include = "workshop_fastapi"}]
+
+[tool.poetry.dependencies]
+python = "3.12.1"
+fastapi = {extras = ["all"], version = "^0.110.2"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
