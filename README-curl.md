@@ -61,6 +61,14 @@ Aqui estão os oito exercícios propostos para praticar o uso do `curl`, acompan
     ```bash
     curl -X POST http://httpbin.org/post -H "Content-Type: application/json" -d '{"username":"john", "password":"12345"}'
     ```
+
+Importância do -X:
+O uso do -X é particularmente importante quando você precisa realizar operações específicas que requerem diferentes tipos de métodos HTTP. Por exemplo:
+
+GET: Usado para solicitar dados de um recurso específico.
+POST: Usado para enviar dados para serem processados para um recurso específico. Normalmente resulta em uma mudança de estado ou efeitos colaterais no servidor.
+PUT: Usado para enviar dados para atualizar um recurso existente.
+DELETE: Usado para deletar um recurso específico.
     
 * **Resposta Esperada**: Httpbin irá ecoar de volta os dados que você enviou em um objeto JSON. A seção `json` da resposta incluirá os dados `{"username": "john", "password": "12345"}`.
 

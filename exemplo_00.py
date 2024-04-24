@@ -10,13 +10,14 @@ app = FastAPI()
 def root(): # O nome não importa
     return {"message": "Bem vindo a Jornada"} # Essa será a data que vamos retornar ao usuário
 
-
 # Carregando o modelo previamente treinado
 modelo = joblib.load("modelo_casas.pkl")
 
 class Casa(BaseModel):
     tamanho: float
     quartos: int
+
+previsoes = []
 
 @app.post("/prever/")
 def prever_preco(casa: Casa):
@@ -26,7 +27,7 @@ def prever_preco(casa: Casa):
     try:
         # Fazendo a previsão usando o modelo
         preco_estimado = modelo.predict(dados_entrada)
-        return {"preco_estimado": preco_estimado[0]}
+        return {"preco_estimado": preco_estimado[0], "dados": casa.model_dump()}
     except Exception as e:
         # Tratamento de exceção para qualquer erro durante a previsão
         raise HTTPException(status_code=500, detail=str(e))

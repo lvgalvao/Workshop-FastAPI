@@ -10,6 +10,9 @@ packages = [{include = "workshop_fastapi"}]
 python = "3.12.1"
 fastapi = {extras = ["all"], version = "^0.110.2"}
 scikit-learn = "^1.4.2"
+requests = "^2.31.0"
+streamlit = "^1.33.0"
+email-validator = "^2.1.1"
 
 
 [build-system]

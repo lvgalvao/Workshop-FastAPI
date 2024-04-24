@@ -88,6 +88,10 @@ Usar os cabeçalhos Accept e Content-Type nas suas requisições HTTP é uma for
 Content-Type: application/json: Este cabeçalho informa ao servidor que o corpo da requisição que você está enviando está em formato JSON. É uma maneira de dizer, "Ei, os dados que estou enviando estão em JSON; por favor, interprete-os dessa forma."
 Accept: application/json: Este cabeçalho diz ao servidor que você deseja que a resposta seja em JSON. Isso é particularmente útil em APIs que podem retornar dados em diferentes formatos. Ao especificar application/json, você está solicitando que a API responda com dados nesse formato específico.
 
+#### Postman
+
+Também temos a opção usar o Postman (uma aplicação)
+
 
 ### 5. Trabalhando com Dados
 

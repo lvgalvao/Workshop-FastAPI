@@ -2,19 +2,20 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
+import joblib
 
-# Exemplo de dados: [tamanho, quartos], preço
+# Exemplo de dados: [tamanho, quartos, vagas], preço
 X = np.array([
-    [100, 3],
-    [150, 4],
-    [120, 2],
-    [300, 5],
-    [200, 3],
-    [250, 4],
-    [180, 3],
-    [140, 2],
-    [320, 5],
-    [210, 3]
+    [100, 3, 2],
+    [150, 4, 3],
+    [120, 2, 1],
+    [300, 5, 4],
+    [200, 3, 2],
+    [250, 4, 3],
+    [180, 3, 2],
+    [140, 2, 1],
+    [320, 5, 4],
+    [210, 3, 0]  # Exemplo de uma casa sem vaga de garagem
 ])
 y = np.array([200000, 300000, 180000, 500000, 400000, 450000, 360000, 220000, 520000, 410000])
 
@@ -29,10 +30,6 @@ modelo.fit(X_train, y_train)
 y_pred = modelo.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
 print(f"MSE: {mse}")
-
-# O modelo agora pode ser usado para fazer previsões
-
-import joblib
 
 # Salvando o modelo treinado
 joblib.dump(modelo, 'modelo_casas.pkl')
